@@ -1,0 +1,15 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=facf6215883e4616ca55bc087d8f25798236cd629cd2196fb8b8b56c2ed99d49
+language: node_js
+node_js:
+  - "lts/*"
+cache: npm
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+after_script:
+  - npm run cover
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - ./cc-test-reporter after-build -t lcov --exit-code  $TRAVIS_TEST_RESULT
