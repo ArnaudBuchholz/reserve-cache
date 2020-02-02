@@ -12,7 +12,6 @@ cache handler for [REserve](https://npmjs.com/package/reserve).
 [![reserve](http://img.shields.io/npm/dm/reserve-cache.svg)](https://www.npmjs.org/package/reserve-cache)
 [![install size](https://packagephobia.now.sh/badge?p=reserve-cache)](https://packagephobia.now.sh/result?p=reserve-cache)
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FArnaudBuchholz%2Freserve-cache.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FArnaudBuchholz%2Freserve-cache?ref=badge_shield)
 
 ## Usage
 
