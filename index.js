@@ -1,6 +1,6 @@
 'use strict'
 
-const $cache = Symbol('cache')
+const $cache = Symbol('REserve/cache@data')
 
 function send (response, statusCode, value) {
   if (value) {
