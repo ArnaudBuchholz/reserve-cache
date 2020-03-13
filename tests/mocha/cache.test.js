@@ -63,7 +63,7 @@ describe('cache', function () {
 
   it('ignores other verbs', () => mocked.request('PUT', '/none', {}, '?')
     .then(response => {
-      assert(() => response.statusCode === 500)
+      assert(() => response.statusCode === 501)
     })
   )
 })
