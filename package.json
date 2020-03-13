@@ -1,6 +1,6 @@
 {
   "name": "reserve-cache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cache handler for REserve",
   "main": "./index.js",
   "files": [
@@ -30,6 +30,9 @@
     "url": "https://github.com/ArnaudBuchholz/reserve-cache/issues"
   },
   "homepage": "https://github.com/ArnaudBuchholz/reserve-cache#readme",
+  "dependencies": {
+    "reserve": "^1.4.0"
+  },
   "devDependencies": {
     "coveralls": "^3.0.9",
     "eslint-utils": "^2.0.0",
@@ -37,10 +40,8 @@
     "mocha": "^7.0.0",
     "mock-require": "^3.0.3",
     "nyc": "^15.0.0",
-    "reserve": "^1.2.0",
     "standard": "^14.3.1"
   },
-  "dependencies": {},
   "standard": {
     "globals": [
       "process",
