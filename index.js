@@ -1,6 +1,7 @@
 'use strict'
 
 const $cache = Symbol('REserve/cache@data')
+const { body } = require('reserve')
 
 function send (response, statusCode, value) {
   if (value) {
@@ -25,16 +26,6 @@ handlers.GET = async ({ cache, redirect, response }) => {
   }
 }
 
-function readBody (request) {
-  return new Promise((resolve, reject) => {
-    const buffer = []
-    request
-      .on('data', chunk => buffer.push(chunk.toString()))
-      .on('error', reject)
-      .on('end', () => resolve(buffer.join('')))
-  })
-}
-
 handlers.POST = async ({ cache, redirect, request, response }) => {
   let statusCode
   if (Object.prototype.hasOwnProperty.call(cache, redirect)) {
@@ -42,7 +33,7 @@ handlers.POST = async ({ cache, redirect, request, response }) => {
   } else {
     statusCode = 201
   }
-  cache[redirect] = await readBody(request)
+  cache[redirect] = await body(request)
   send(response, statusCode)
 }
 
@@ -55,12 +46,8 @@ module.exports = {
   async validate (mapping) {
     mapping[$cache] = {}
   },
-
+  method: Object.keys(handlers),
   async redirect ({ mapping, match, redirect, request, response }) {
-    const handler = handlers[request.method]
-    if (handler) {
-      return handler({ cache: mapping[$cache], redirect, request, response })
-    }
-    return 500
+    return handlers[request.method]({ cache: mapping[$cache], redirect, request, response })
   }
 }
